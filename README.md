@@ -12,7 +12,8 @@ LWSP handle two couple of message:
 - AuthN (and its response from innk)
 
 Between this two messages the LWSP calculates the crypto stuff and after that it can crypt/decrypt data.
-Please remember that the library only create and interprets the string, it doesn't send data.
+Please remember that the library only creates and interprets the string, it doesn't send data.
+To properly make a symbiote-agent remember that you should use the interface for registration of sdev, then the interface to join its resources and periodically sends a keepalive message.
 
 # API
 
@@ -63,11 +64,17 @@ Remember to call elaborateInnkResp with the response get back from innk.
 
 - return value: char* - the Json string that you should put in the body of the POST to send to innkeeper.
 
-## char* preparePacket(char* semantic)
+## const char* preparePacket(char* semantic)
 Crypt the message to be send to innkeeper.
  - in: char * semantic - the data to be crypted and sent using the LWSP
 
- - return value: char* - 
+ - return value: char* - the Json string that you should put in the body of the POST to send to innkeeper.
+
+## char* decryptPacketFromInnk(char* data)
+Decrypt the innkeeper response.
+- in: char* data - the Json message coming from the innkeeper. 
+
+- return value: const char* - the decrypted content of the message sent from innkeeper
 
 # Use the library in python
 
