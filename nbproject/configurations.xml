@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <itemPath>ext_library/ArduinoJson/ArduinoJson.h</itemPath>
+      <itemPath>ext_library/Crypto/Crypto.h</itemPath>
+      <itemPath>ext_library/Print/Print.h</itemPath>
+      <itemPath>ext_library/Printable/Printable.h</itemPath>
+      <itemPath>ext_library/base64_arduino/base64.hpp</itemPath>
+      <itemPath>ext_library/base64_lib/base64_lib.h</itemPath>
+      <itemPath>ext_library/libb64/cdecode.h</itemPath>
+      <itemPath>ext_library/libb64/cencode.h</itemPath>
+      <itemPath>lsp.h</itemPath>
+      <itemPath>ext_library/Cryptosuite/sha1.h</itemPath>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+      <itemPath>ext_library/Crypto/Crypto.cpp</itemPath>
+      <itemPath>ext_library/Print/Print.cpp</itemPath>
+      <itemPath>ext_library/base64_lib/base64_lib.cpp</itemPath>
+      <itemPath>ext_library/libb64/cdecode.c</itemPath>
+      <itemPath>ext_library/libb64/cencode.c</itemPath>
+      <itemPath>ext_library/Cryptosuite/sha1.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>lsp.cpp</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>.</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <ccTool>
+          <incDir>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/ArduinoJson</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/Crypto</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/base64_lib</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/libb64</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/Cryptosuite</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/Print</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/Printable</pElem>
+            <pElem>/home/matteo/NetBeansProjects/ext_library/base64_arduino</pElem>
+          </incDir>
+        </ccTool>
+      </compileType>
+      <item path="ext_library/ArduinoJson/ArduinoJson.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/Crypto/Crypto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Crypto/Crypto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Cryptosuite/sha1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Cryptosuite/sha1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Print/Print.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Print/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Printable/Printable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/base64_arduino/base64.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/base64_lib/base64_lib.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="ext_library/base64_lib/base64_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cdecode.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cdecode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cencode.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cencode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lsp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lsp.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="2">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+      </compileType>
+      <item path="ext_library/ArduinoJson/ArduinoJson.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/Crypto/Crypto.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Crypto/Crypto.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Cryptosuite/sha1.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Cryptosuite/sha1.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Print/Print.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="ext_library/Print/Print.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/Printable/Printable.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/base64_arduino/base64.hpp"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/base64_lib/base64_lib.cpp"
+            ex="false"
+            tool="1"
+            flavor2="0">
+      </item>
+      <item path="ext_library/base64_lib/base64_lib.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cdecode.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cdecode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cencode.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="ext_library/libb64/cencode.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="lsp.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="lsp.h" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
