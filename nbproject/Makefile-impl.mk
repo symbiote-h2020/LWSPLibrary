@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=lsp_new_Dlib_(GIT)
+PROJECTNAME=LWSPLibrary
 
 # Active Configuration
 DEFAULTCONF=Debug

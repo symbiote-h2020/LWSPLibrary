@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=GNU-Linux
 CND_ARTIFACT_DIR_Debug=dist/Debug/GNU-Linux
-CND_ARTIFACT_NAME_Debug=liblsp_new_Dlib__GIT_.so
-CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/liblsp_new_Dlib__GIT_.so
+CND_ARTIFACT_NAME_Debug=libLWSPLibrary.so
+CND_ARTIFACT_PATH_Debug=dist/Debug/GNU-Linux/libLWSPLibrary.so
 CND_PACKAGE_DIR_Debug=dist/Debug/GNU-Linux/package
-CND_PACKAGE_NAME_Debug=liblspnewDlib(GIT).so.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/liblspnewDlib(GIT).so.tar
+CND_PACKAGE_NAME_Debug=libLWSPLibrary.so.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/GNU-Linux/package/libLWSPLibrary.so.tar
 # Release configuration
 CND_PLATFORM_Release=GNU-Linux
 CND_ARTIFACT_DIR_Release=dist/Release/GNU-Linux
-CND_ARTIFACT_NAME_Release=liblsp_new_Dlib__GIT_.so
-CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/liblsp_new_Dlib__GIT_.so
+CND_ARTIFACT_NAME_Release=libLWSPLibrary.so
+CND_ARTIFACT_PATH_Release=dist/Release/GNU-Linux/libLWSPLibrary.so
 CND_PACKAGE_DIR_Release=dist/Release/GNU-Linux/package
-CND_PACKAGE_NAME_Release=liblspnewDlib(GIT).so.tar
-CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/liblspnewDlib(GIT).so.tar
+CND_PACKAGE_NAME_Release=libLWSPLibrary.so.tar
+CND_PACKAGE_PATH_Release=dist/Release/GNU-Linux/package/libLWSPLibrary.so.tar
 #
 # include compiler specific variables
 #
