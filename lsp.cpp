@@ -462,20 +462,26 @@ extern "C" void saveContext() {
 /*
 	Return a SHA1(symbiote-id||prevDK1). IN/OUT data should be intended as ascii hex rapresentation
 */
-extern "C" const char* getHashOfIdentity(std::string id) {
+extern "C" const char* getHashOfIdentity(char* id) {
 	// return all zeros if first time connect to a SSP
+        P("GETHASHOFIDENTITY");
 	if (_lastSSPId == "") return "00000000000000000000";
 	else {
-		std::string tmpString = id;
-                
-                char tmpDk[AES_KEY_LENGTH];
+                P("-");
+		std::string tmpString = std::string(id);
+                P("-");
+                char tmpDk[(2*AES_KEY_LENGTH) + 1];
+                P("-");
                 memset (tmpDk, 0, sizeof(tmpDk));
-                sprintf(tmpDk, "%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x%x", _dk1[0], _dk1[1], _dk1[2], _dk1[3], _dk1[4], _dk1[5], _dk1[6], _dk1[7], _dk1[8], 
+                P("-");
+                sprintf(tmpDk, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x", _dk1[0], _dk1[1], _dk1[2], _dk1[3], _dk1[4], _dk1[5], _dk1[6], _dk1[7], _dk1[8], 
                 _dk1[9], _dk1[10], _dk1[11], _dk1[12],_dk1[13], _dk1[14], _dk1[15]);
-       
+                P("-");
                 std::string DkString = tmpString;
-                for (uint8_t i = 0; i < AES_KEY_LENGTH; i++) DkString += tmpDk[i];
-                
+                for (uint8_t i = 0; i < (2*AES_KEY_LENGTH); i++) DkString += tmpDk[i];
+                P("-");
+                PI("Got this symId|DK1 string: ");
+                P("%s\n", DkString.c_str());
                 
 		//for (uint8_t i = 0; i < AES_KEY_LENGTH; i++) tmpString = std::string(_prevDk1[i], HEX);
 		sha1.init();
@@ -484,18 +490,24 @@ extern "C" const char* getHashOfIdentity(std::string id) {
 		uint8_t dataout[SHA1_KEY_SIZE];
 		memcpy(dataout, sha1.result(), SHA1_KEY_SIZE);
                 
-                char tmpResult[SHA1_KEY_SIZE];
+                char tmpResult[(2*SHA1_KEY_SIZE) + 1];
                 memset (tmpResult, 0, sizeof(tmpResult));
-                for (uint8_t i = 0; i < SHA1_KEY_SIZE; i++) sprintf(tmpResult, "%x", dataout[i]);
+                //for (uint8_t i = 0; i < SHA1_KEY_SIZE; i++) sprintf(tmpResult, "%x", dataout[i]);
+                sprintf(tmpResult, "%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x", dataout[0], dataout[1], dataout[2], dataout[3], dataout[4], dataout[5], dataout[6], dataout[7], dataout[8], 
+                dataout[9], dataout[10], dataout[11], dataout[12],dataout[13], dataout[14], dataout[15], dataout[16], dataout[17], dataout[18], dataout[19]);
        
                 std::string resString = "";
-                for (uint8_t i = 0; i < AES_KEY_LENGTH; i++) resString += tmpResult[i];
+                for (uint8_t i = 0; i < (2*SHA1_KEY_SIZE); i++) resString += tmpResult[i];
                 
 		//std::string retString = "";
 		//for (uint8_t i = 0; i < SHA1_KEY_SIZE; i++) retString = std::string(dataout[i], HEX);
 		PI("Got this SHA-1(sym-id||prevDK1): ");
 		P("%s\n", resString.c_str());
-		return resString.c_str();
+		//return resString.c_str();
+                
+                char* retStr = (char*) malloc(resString.length()+1);
+                strcpy(retStr, resString.c_str());
+                return retStr;
 	}
 }
 
@@ -863,7 +875,7 @@ extern "C" void cryptData(std::string in, std::string& out) {
 	//printBuffer((uint8_t*)enciphered, encrypted_size, "EncrypData");
 	base64 b64enc;
 	std::string encoded = b64enc.encode(enciphered, encrypted_size, false);
-	out = encoded;
+	out = encoded.c_str();
 }
 
 

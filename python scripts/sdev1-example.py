@@ -4,7 +4,7 @@ from ctypes import c_char_p
 from time import sleep
 import requests
 
-LIBLWSP = '../dist/Debug/GNU-Linux/liblsp_new_Dlib__GIT_.so'
+LIBLWSP = '../dist/Debug/GNU-Linux/libLWSPLibrary.so'
 lib = ctypes.CDLL(LIBLWSP)
 
 lib.sendSDEVHelloToGW.restype = ctypes.c_char_p
