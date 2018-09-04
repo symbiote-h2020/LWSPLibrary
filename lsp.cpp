@@ -860,7 +860,7 @@ extern "C" bool decryptAndVerify(std::string authn, std::string& decrypted, std:
 	Convert plain text to b64 of encrypted data
 	NO use of sequence number
 */
-extern "C" void cryptData(std::string in, std::string& out) {
+/*extern "C" void cryptData(std::string in, std::string& out) {
 	P("CRYPTDATA");
 	int length = 0;
 	bufferSize((char*)in.c_str(), length);
@@ -876,16 +876,54 @@ extern "C" void cryptData(std::string in, std::string& out) {
 	base64 b64enc;
 	std::string encoded = b64enc.encode(enciphered, encrypted_size, false);
 	out = encoded.c_str();
+}*/
+
+extern "C" char* cryptData(std::string in) {
+	P("CRYPTDATA");
+	int length = 0;
+        //P("1");
+	bufferSize((char*)in.c_str(), length);
+        //P("2");
+	byte enciphered[length];
+        //P("3");
+	uint8_t iv[16];
+        //P("4");
+	for (uint8_t k = 0; k < 16; k++) iv[k] = _iv.at(k);
+        //P("5");
+	//printBuffer(iv, 16, "IV\t");
+	AES aesEncryptor(_dk1, iv, AES::AES_MODE_128, AES::CIPHER_ENCRYPT);
+        //P("6");
+	aesEncryptor.process((uint8_t*)in.c_str(), enciphered, length);
+        //P("7");
+	int encrypted_size = sizeof(enciphered);
+        //P("8");
+	//printBuffer((uint8_t*)enciphered, encrypted_size, "EncrypData");
+	base64 b64enc;
+        //P("9");
+	std::string encoded = b64enc.encode(enciphered, encrypted_size, false);
+	//P("10");
+        //P("encoded: %s", encoded.c_str());
+	//out = encoded;	
+        //P("11");
+        int len = encoded.length()+1;
+        //P("len: %d", len);
+        // freed in caller method
+        char* retStr = (char*) malloc(len);
+        strcpy(retStr, encoded.c_str());
+        return retStr;
+	//return encoded.c_str();
 }
 
 
 extern "C" const char* preparePacket(char* semantic) {
     P("PREPARE PACKET FOR INNK");
-    std::string tempCryptData = "";
+    //std::string tempCryptData = "";
     std::string tempJsonPacket = "";
-    std::string tempClearData (semantic);
-    
-    cryptData(tempClearData, tempCryptData);
+    std::string tempClearData(semantic);
+    //cryptData(tempClearData, tempCryptData);
+    char* tmpCC = cryptData(tempClearData);
+    std::string tempCryptData(tmpCC);
+    //P("crypt: %s", tempCryptData.c_str());
     _jsonBuff.clear();
     JsonObject& jsonCrypt = _jsonBuff.createObject();
     jsonCrypt["mti"] = STRING_MTI_SDEV_DATA_UPLINK;
@@ -895,10 +933,11 @@ extern "C" const char* preparePacket(char* semantic) {
     P("Prepare this JSON:");
     P(tempJsonPacket.c_str());
    // return tempJsonPacket.c_str();
-    
+    free(tmpCC);
     char* retStr = (char*) malloc(tempJsonPacket.length()+1);
     strcpy(retStr, tempJsonPacket.c_str());
     return retStr;
+
 }
 
 extern "C" const char* decryptPacketFromInnk(char* data) {

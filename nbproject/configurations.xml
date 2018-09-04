@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<configurationDescriptor version="100">
+<configurationDescriptor version="97">
   <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
@@ -56,14 +56,14 @@
       <compileType>
         <ccTool>
           <incDir>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/ArduinoJson</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/Crypto</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/base64_lib</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/libb64</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/Cryptosuite</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/Print</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/Printable</pElem>
-            <pElem>/home/matteo/NetBeansProjects/ext_library/base64_arduino</pElem>
+            <pElem>ext_library/ArduinoJson</pElem>
+            <pElem>ext_library/base64_arduino</pElem>
+            <pElem>ext_library/base64_lib</pElem>
+            <pElem>ext_library/Crypto</pElem>
+            <pElem>ext_library/Cryptosuite</pElem>
+            <pElem>ext_library/libb64</pElem>
+            <pElem>ext_library/Print</pElem>
+            <pElem>ext_library/Printable</pElem>
           </incDir>
         </ccTool>
       </compileType>

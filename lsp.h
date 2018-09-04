@@ -169,7 +169,7 @@
 	extern "C" std::string getSessionId();
 	extern "C" char* getDK1();
 	extern "C" const char* getHashOfIdentity(char* id);
-	extern "C" void cryptData(std::string in, std::string& out);
+	extern "C" char* cryptData(std::string in);
         
         extern "C" const char* preparePacket(char* semantic);
         extern "C" const char* decryptPacketFromInnk(char* data);
