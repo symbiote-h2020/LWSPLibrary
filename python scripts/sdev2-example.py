@@ -127,6 +127,7 @@ if __name__ == "__main__":
     sym_id = sdev_returned["symId"]
     ssp_id = sdev_returned["sspId"]
     timeout = sdev_returned["registrationExpiration"]
+    lib.saveContext(c_char_p('5b8ea0eeef6ecf0f9f53e1de'))
     print("SDEV registration successful")
 
     resource_1 = str('{\
@@ -166,7 +167,7 @@ if __name__ == "__main__":
         innk_resp = requests.post(URL_KEEPALIVE, data=encr_str, headers={'Content-Type': 'Application/json'})
         print("Keepalive sent")
         print("TESTING HASHFIELD FUCTION....")
-        json_hashfield = c_char_p(lib.getHashOfIdentity('123456789'))
+        json_hashfield = c_char_p(lib.getHashOfIdentity())
         print("hashfield:")
         print(json_hashfield.value)
         sleep(timeout)

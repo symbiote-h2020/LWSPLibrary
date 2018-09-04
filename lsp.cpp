@@ -423,6 +423,12 @@ extern "C" void getContext() {
             //char _prevDk1[12];
             memset(_prevDk1, 0, sizeof(_prevDk1));
             std::string tmpPrevDk1String = _root["prev_dk1"];
+            _lastSSPId = _root["sspWiFiId"].as<std::string>();
+            _symId = _root["symId"].as<std::string>();
+            PI("sspWiFiId = ");
+            P(_lastSSPId.c_str());
+            PI("symId = ");
+            P(_symId.c_str());
             if (tmpPrevDk1String != "") {
                 for (uint8_t i = 0; i < sizeof(_prevDk1); i++) {
                         if (i < tmpPrevDk1String.length()) _prevDk1[i] = tmpPrevDk1String.at(i);
@@ -438,7 +444,7 @@ extern "C" void getContext() {
 	return;
 }
 
-extern "C" void saveContext() {
+extern "C" void saveContext(char* symId) {
 	P("SAVECONTEXTINFLASH");
 	std::ofstream contextFile;
 	contextFile.open ("context.txt");
@@ -449,6 +455,8 @@ extern "C" void saveContext() {
 	JsonObject& _root = _jsonBuff.createObject();
 	_root["sspWiFiId"] = _currentSSPId.c_str();
 	_root["prev_dk1"] = _dk1;
+        _root["symId"] = symId;
+        _symId = symId;
 	_root.printTo(jsonData);
 	if (contextFile.is_open()) {
 		// file exist, so a context is been created
@@ -462,13 +470,13 @@ extern "C" void saveContext() {
 /*
 	Return a SHA1(symbiote-id||prevDK1). IN/OUT data should be intended as ascii hex rapresentation
 */
-extern "C" const char* getHashOfIdentity(char* id) {
+extern "C" const char* getHashOfIdentity() {
 	// return all zeros if first time connect to a SSP
         P("GETHASHOFIDENTITY");
 	if (_lastSSPId == "") return "00000000000000000000";
 	else {
                 P("-");
-		std::string tmpString = std::string(id);
+		std::string tmpString = _symId;
                 P("-");
                 char tmpDk[(2*AES_KEY_LENGTH) + 1];
                 P("-");

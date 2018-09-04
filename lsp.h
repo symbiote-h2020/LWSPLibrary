@@ -156,7 +156,7 @@
 	//~lsp();
 	extern "C" void begin(char* SSPId);
 	extern "C" void getContext();
-	extern "C" void saveContext();
+	extern "C" void saveContext(char * symId);
 	extern "C" void calculateDK1(uint8_t num_iterations);
 	extern "C" void calculateDK2(uint8_t num_iterations);
 	extern "C" void PBKDF2function(uint8_t *pass, uint32_t pass_len, uint8_t *salt, uint32_t salt_len,uint8_t *output, uint32_t key_len, uint32_t rounds );
@@ -168,7 +168,7 @@
 	extern "C" char* sendAuthN();
 	extern "C" std::string getSessionId();
 	extern "C" char* getDK1();
-	extern "C" const char* getHashOfIdentity(char* id);
+	extern "C" const char* getHashOfIdentity();
 	extern "C" char* cryptData(std::string in);
         
         extern "C" const char* preparePacket(char* semantic);
@@ -207,6 +207,7 @@
 	uint8_t _SDEVmac[6];
 	std::string _lastSSPId;
 	std::string _currentSSPId;
+        std::string _symId;
 	std::string _kdf;
 	std::string _cp;
 	std::string _sessionId;
