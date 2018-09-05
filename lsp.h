@@ -25,6 +25,10 @@
 #include <Crypto.h>
 #include "base64_lib.h"
 #include <sha1.h> // please be sure to use the forked version at https://github.com/bbx10/Cryptosuite
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <pwd.h>
 
 #ifndef DEBUG_SYM_CLASS
 #define DEBUG_SYM_CLASS 1

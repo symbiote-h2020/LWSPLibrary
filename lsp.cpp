@@ -402,8 +402,24 @@ extern "C" void getContext() {
 	std::string tmpString = "";
 	char c;
 	// Stream class to read from files
+        
+        const char *homedir;
+        if ((homedir = getenv("HOME")) == NULL) {
+            homedir = getpwuid(getuid())->pw_dir;
+        }
+        printf("Get this home directory: %s\n", homedir);
+        
 	std::ifstream contextFile;
-	contextFile.open ("context.txt");
+	//contextFile.open ("context.txt");
+        std::string contextFilePath = homedir;
+        contextFilePath += "/.sdev-agent/";
+        printf("Get this path: %s\n", contextFilePath.c_str());
+        
+        std::string contextFileName = contextFilePath;
+        contextFileName += "context.txt";
+        printf("Search this file: %s\n", contextFileName.c_str());
+        
+	contextFile.open (contextFileName.c_str());
 	if (contextFile.is_open()) {
 		// file exist, so a context is been created
 		while (!contextFile.eof()) {
@@ -412,7 +428,12 @@ extern "C" void getContext() {
 		}
                 P("Read this: %s\n", tmpString.c_str());
 	}
-	else P("Unable to open file");
+	else {
+            P("No context file found, create file");
+            contextFile.close();
+            saveContext("");
+        } 
+            
 	_jsonBuff.clear();
 	JsonObject& _root = _jsonBuff.parseObject(tmpString.c_str());
 	if (!_root.success()) {
@@ -447,7 +468,27 @@ extern "C" void getContext() {
 extern "C" void saveContext(char* symId) {
 	P("SAVECONTEXTINFLASH");
 	std::ofstream contextFile;
-	contextFile.open ("context.txt");
+        struct stat st = {0};
+
+        const char *homedir;
+        if ((homedir = getenv("HOME")) == NULL) {
+            homedir = getpwuid(getuid())->pw_dir;
+        }
+        printf("Get this home directory: %s\n", homedir);
+        std::string contextFilePath = homedir;
+        contextFilePath += "/.sdev-agent/";
+        printf("Get this path: %s\n", contextFilePath.c_str());
+        
+        if (stat(contextFilePath.c_str(), &st) == -1) {
+            P("No directory found, creating...");
+            mkdir(contextFilePath.c_str(), 0700);
+        }
+        
+        std::string contextFileName = contextFilePath;
+        contextFileName += "context.txt";
+        printf("Search this file: %s\n", contextFileName.c_str());
+        
+	contextFile.open (contextFileName.c_str());
 	std::string jsonData = "";
 	//string _currentSSPId = "sym-1234567890abcdef";
 	//char _dk1[11] = {0x10, 0x20, 0x30, 0x40, 0x50, 0x60, 0x70, 0x70, 0x70, 0x10};
@@ -462,7 +503,7 @@ extern "C" void saveContext(char* symId) {
 		// file exist, so a context is been created
 		contextFile << jsonData;
 	}
-	else P("Unable to open file");
+	else P("Unable to open file(2)");
 	contextFile.close();
 }
 
