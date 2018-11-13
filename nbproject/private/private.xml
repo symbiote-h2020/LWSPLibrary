@@ -7,8 +7,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/pi/sdev-agent/LWSPLibrary/lsp.cpp</file>
-            <file>file:/home/pi/sdev-agent/LWSPLibrary/lsp.h</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/ext_library/base64_lib/base64_lib.h</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/ext_library/libb64/cencode.c</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/lsp.cpp</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/ext_library/base64_lib/base64_lib.cpp</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/ext_library/base64_arduino/base64.hpp</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/ext_library/libb64/cdecode.c</file>
+            <file>file:/home/matteo/NetBeansProjects/LWSPLibrary/lsp.h</file>
         </group>
     </open-files>
 </project-private>
